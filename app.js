@@ -3,12 +3,13 @@ const btnplay= document.querySelector(".play");
 const btnstop= document.querySelector(".stop");
 
 
+let timer=0;
 let minute =0;
 let second=0;
 let msecond=0;
 let isWatch = true;
 
-const WatchTimer = ()=>{
+const watchTimer = ()=>{
     msecond++;
     if(msecond == 100){
         second++;
@@ -27,16 +28,18 @@ const WatchTimer = ()=>{
 }
 const playTime = () =>{
 
-  timer =  setInterval(WatchTimer,10);
+  timer =  setInterval(watchTimer,100);
+ 
 }
-const stopTime =() => {
-    clearInterval(timer);
+const stopTime = () => {
+    clearInterval(timer)
+    
 };
 btnplay.addEventListener("click",()=>{
-    isWatch = !isWatch
-   console.log(WatchTimer)
+    isWatch = !isWatch;
+   
     if(isWatch == false){
-      console.log(playTime())
+    
         playTime(); 
       
       btnplay.innerHTML=`<i class="fa-solid fa-circle-stop"></i> STOP`;
@@ -46,5 +49,14 @@ btnplay.addEventListener("click",()=>{
     }
 })
 
-// btnstop.addEventListener("click",()=>{
-//     stopTime();
+ btnstop.addEventListener("click",()=>{
+   isWatch = true;
+     stopTime();
+     msecond = 0;
+     second = 0;
+     minute = 0;
+     display.innerHTML=`0${minute}:0${second}:0${msecond}`;
+     btnplay.innerHTML=`<i class="fa-solid fa-circle-play"></i> PLAY`
+
+ })
+ 
