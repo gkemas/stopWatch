@@ -32,7 +32,7 @@ const playTime = () =>{
  
 }
 const stopTime = () => {
-    clearInterval(timer)
+    clearInterval(timer) 
     
 };
 btnplay.addEventListener("click",()=>{
